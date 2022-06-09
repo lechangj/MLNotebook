@@ -46,7 +46,7 @@ for $ i = 1, ..., k$
 2. Cross entropy cost function for classification problems
    - The assumption is that your model predicts a probability distribution for each classs $ i = 1, 2, ..., c$
    - For a binary classification
-     $$ -(y\;log(p) + (1-y)\;log(1-p))$$
+     $$ -(ylog(p) + (1-y)log(1-p))$$
    - For M number of classes > 2
      $$ - \sum \limits _{c=1} ^{M} {y _{0,c}\log(p _{0,c})} $$
      <br><br>

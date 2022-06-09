@@ -14,7 +14,7 @@
 - The process of passing them over an image is known as **convolution**.
 - During convolution, we would _loose borders_. We can **pad** the image with more values. This allows us to preserve the image size.
 - Convolution as **pattern finding** (_Convolution_ vs _Cross-Correlation_ or _Pearson-Correlation_)
-  $$ a \cdot b = \sum \limits _{i=1} ^{N} a _{i} b _{i} = |a||b| \:cos \theta _{ab} $$
+  $$ a \cdot b = \sum \limits _{i=1} ^{N} a _{i} b _{i} = |a||b| cos \theta _{ab} $$
   - The dot product can be thought of as a correlation measure.
   - If high positive correlation -> dot product is large and positive.
   - If high negative correlation -> dot product is large and negative.
