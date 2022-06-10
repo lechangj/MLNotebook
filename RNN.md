@@ -24,12 +24,14 @@
   - constant length sequences with zeros so that you can use numpy array for efficiency
 <br>
 - Forecast in Sequence data using loop (Formula)
-  - x = last value of train set
-  - predictions = []
-  - for i in range (length_of_forecast):
-  - &nbsp;&nbsp;x_next = model.predict(x)
-  - &nbsp;&nbsp;predictions.append(x_next)
-  - &nbsp;&nbsp;x = concat(x[1:], x_next)
+```
+  x = last value of train set
+  predictions = []
+  for i in range (length_of_forecast):
+    x_next = model.predict(x)
+    predictions.append(x_next)
+    x = concat(x[1:], x_next)
+```
   <br><br>
 
 ### Architecture of RNN
