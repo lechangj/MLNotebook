@@ -5,12 +5,31 @@
   - time-stamped sales data
   - sentences
   - heartbeat data
-  - audio data
-  - music data
+  - audio/music data - speech recognition
+  - stock price
   - car trajectories
+  - airline passengers
+  - weather tracking
 - **Order** is important.
 - In RNN, let the neuron know about its previous history of outputs by feeding its output back into istself as an input.
 - Cells that are a function of inputs from previous time stpes are also known as _memory cells_.
+
+- The sahpe of a sequence: 3-D array of size N X T X D
+  - N = # samples
+  - D = # features
+  - T = # time steps in the sequence
+  - Ex) Location Data: N - Single trip to work, D - lat, lng pair, T -  # of (lat,lng) measurements
+<br>
+- Variable length sequences
+  - constant length sequences with zeros so that you can use numpy array for efficiency
+<br>
+- Forecast in Sequence data using loop (Formula)
+  - x = last value of train set
+  - predictions = []
+  - for i in range (length_of_forecast):
+  - &nbsp;&nbsp;x_next = model.predict(x)
+  - &nbsp;&nbsp;predictions.append(x_next)
+  - &nbsp;&nbsp;x = concat(x[1:], x_next)
   <br><br>
 
 ### Architecture of RNN
