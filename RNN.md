@@ -24,13 +24,13 @@
   - constant length sequences with zeros so that you can use numpy array for efficiency
 <br>
 - Forecast in Sequence data using loop (Formula)
-```{python}
-  x = last value of train set
-  predictions = []
-  for i in range (length_of_forecast):
-    x_next = model.predict(x)
-    predictions.append(x_next)
-    x = concat(x[1:], x_next)
+```python
+x = last value of train set
+predictions = []
+for i in range (length_of_forecast):
+  x_next = model.predict(x)
+  predictions.append(x_next)
+  x = concat(x[1:], x_next)
 ```
   <br><br>
 
