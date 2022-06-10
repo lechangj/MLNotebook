@@ -75,11 +75,17 @@ for i in range (length_of_forecast):
   - Input ($ x \_{t} $)
   - Output ($ o \_{t} $)
 
+
 $$ f _{t} = \sigma(W _{f}·[h _{t-1}, x _{t}] + b _{f}) $$
+
 $$ i _{t} = \sigma(W _{i}·[h _{t-1}, x _{t}] + b _{i}) $$
+
 $$ \tilde{C _{t}} = tanh(W _{C}·[h _{t-1}, x _{t}] + b _{C}) $$
+
 $$ C _{t} = f _{t} * C _{t-1} + i _{t} * \tilde{C _{t}} $$
+
 $$ o _{t} = \sigma(W _{o}·[h _{t-1}, x _{t}] + b _{o}) $$
+
 $$ h _{t} = o _{t} * C _{t} $$
 
 - LSTM Variations
