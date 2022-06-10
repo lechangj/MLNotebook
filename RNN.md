@@ -24,7 +24,7 @@
   - constant length sequences with zeros so that you can use numpy array for efficiency
 <br>
 - Forecast in Sequence data using loop (Formula)
-```
+```{python}
   x = last value of train set
   predictions = []
   for i in range (length_of_forecast):
