@@ -62,11 +62,13 @@
 - This is the task of uncovering the topical structure of a large collection of documents.
 - Topic modeling is a common text-mining tool and is used in a wide range of domains, from literature to bioinformatics.
 <br>
+
 ![NLP tasks organized according to their relative difficulty](images/nlp_tasks_on_difficulties.jpg)
 
 ### Building Blocks of Language
 - The character based RNN will actually learn the structure of the text.
 <br>
+
 ![Building blocks of language and their applications](images/build_blocks_of_language.jpg)
 
 #### **Phonemes**
@@ -79,6 +81,7 @@ with sample words.
 - Phonemes are particularly important in applications involving speech understanding, such as _speech recognition_, _speech-to-text transcription_, and
 _text-to-speech conversion_.
 <br>
+
 ![Phonemes and examples](images/phonemes_and_examples.jpg)
 
 #### **Morphemes and lexemes**
@@ -101,6 +104,7 @@ phrases in a language.
 - Syntactic structure in linguistics is represented in many different ways. A common approach to representing sentences is a parse tree. 
 - Figure below shows an example parse tree for two English sentences.
 <br>
+
 ![Syntactic structure of two syntactically similar sentences](images/syntactic_structure.jpg)
 
 - This has a hierarchical structure of language, with words at the lowest level, followed
@@ -139,6 +143,7 @@ from that of another language, and the language-processing approaches needed for
 - Ambiguity means uncertainty of meaning. Most human languages are inherently ambiguous. 
 - Consider the following sentence: “I made her duck.” This sentence has multiple meanings.
 <br>
+
 ![Structural ambiguity](images/i_made_her_dog.jpg)
 
 #### Common knowledge
@@ -383,6 +388,7 @@ in the input, and disregards redundant or superfluous information.
 most ubiquitous applications of NLP, and they’re the ones most people are already
 familiar with. Figure below shows the typical interaction model of a conversational agent.
 <br>
+
 ![Flow of conversation agents](images/flow_of_conversation_agents.jpg)
 
 1. _Speech recognition and synthesis_: These are the main components of any voicebased
