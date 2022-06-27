@@ -389,7 +389,7 @@ most ubiquitous applications of NLP, and they’re the ones most people are alre
 familiar with. Figure below shows the typical interaction model of a conversational agent.
 <br>
 
-![Flow of conversation agents](images/flow_of_conversation_agents.jpg)
+	![Flow of conversation agents](images/flow_of_conversation_agents.jpg)
 
 1. _Speech recognition and synthesis_: These are the main components of any voicebased
 conversational agent. Speech recognition involves converting speech signals
@@ -432,7 +432,196 @@ pre-defined template. For example, it might respond by saying, “Now playing
 Symphony No. 25” or “The lights have been dimmed.” In certain scenarios, it can
 also generate a completely new response.
 
+<br><br><br>
+
+## Text Representation
+
+- text representation: the conversion of raw text to a suitable numerical form.
+<br>
+
+	![Text Representation within the NLP Pipeline](images/text_representation_within_NLP_pipeline.jpg)
+
+
+- Four categories in text representation
+	- Basic vectorization approaches
+	- Distributed representations
+	- Universal language representation
+	- Handcrafted features
+
+<br>
+
+- The _semantics_ (meaning) of the sentences arises from the combinations of the these data points.
+	1. Break the sentence into lexical units such as lexemes, words, and phrases
+	2. Derive the meaning for each of the lexical units
+	3. Understand the syntactic (grammatical) structure of the sentence
+	4. Understand the context in which the sentence appears
+
+<br><br>
+## Vector Space Model
+
+- In order for ML algorithms to work
+with text data, the text data must be converted into some mathematical form.
+- Vector space model (VSM) is a mathematical model that represents text units as vectors.
+- The most common way to calculate similarity between two
+text blobs is using cosine similarity: the cosine of the angle between their
+corresponding vectors. The cosine of 0° is 1 and the cosine of 180° is –1, with the
+cosine monotonically decreasing from 0° to 180°.  Given two vectors, A and B, each with n components, the similarity between them is computed as follows:
+<br>
+
+	![Similarity between vectors](images/similarity_between_vectors.jpg)
+
+<br><br>
+## Basic Vectorization Approaches
+
+
+### **One-Hot Encoding**
+- In one-hot encoding, each word w in the corpus vocabulary is given a unique integer
+ID wid that is between 1 and |V|, where V is the set of the corpus vocabulary. 
+- Each word is then represented by a V-dimensional binary vector of 0s and 1s. This is done
+via a |V| dimension vector filled with all 0s barring the index, where index = wid. 
+- At this index, we simply put a 1. The representation for individual words is then combined
+to form a sentence representation.
+- Pros and Cons
+	- Pros:
+		- intuitive to understand and straightforward to implement
+	- Cons:
+		- sparse representation (inefficient to store, compute with, and learn from and leading to overfitting)
+		- does not give a fixed-length representation for text
+		- has no notion of similarity between words
+		- out of vocabulary (OOV) problem
+
+### **Bag of Words**
+- The key idea of Bag of Words is as follows: 
+	- represent the text under consideration as a bag (collection)
+of words while ignoring the order and context. 
+	- It assumes that the text belonging to a given class in the dataset is characterized
+by a unique set of words. 
+	- If two text pieces have nearly the same words, then they
+belong to the same bag (class). Thus, by analyzing the words present in a piece of text,
+one can identify the class (bag) it belongs to.
+- Pros and Cons
+	- Pros:
+		- BoW is fairly simple to understand and implement
+		- Documents having the same words will have their vector
+representations closer to each other in Euclidean space as compared to documents
+with completely different words
+		- We have a fixed-length encoding for any sentence of arbitrary length
+	- Cons:
+		- The size of the vector increases with the size of the vocabulary - sparsity
+		- It does not capture the similarity between different words that mean the same
+thing. - “I run”, “I ran”, and “I ate”.
+		- Out of vocabulary (OOV) problem
+		- Word order information is lost
+
+### **Bag of N-Grams**
+- The bag-of-n-grams (BoN) approach tries to address the word ordering, which can help us capture some context.
+- Each chunk is called an n-gram.
+
+- Pros and Cons
+	- Pros:
+		- It captures some context and word-order information in the form of n-grams
+		- Thus, resulting vector space is able to capture some semantic similarity
+	- Cons:
+		- As n increases, dimensionality (and therefore sparsity) only increases rapidly
+		- Out of vocabulary (OOV) problem
+### **TF-IDF**
+- Term frequency–inverse document frequency (TF-IDF) aims to quantify the importance of a given word relative to
+other words in the document and in the corpus.
+- If a word w appears many times in a document
+$d_{i}$ but does not occur much in the rest of the documents $d_{j}$ in the corpus, then
+the word w must be of great importance to the document $d_{i}$. 
+- The importance of w should increase in proportion to its frequency in $d_{i}$, but at the same time, its importance
+should decrease in proportion to the word’s frequency in other documents $d_{j}$ in
+the corpus.
+- TF (term frequency) measures how often a term or word occurs in a given document.
+- IDF (inverse document frequency) measures the importance of the term across a corpus.
+- TF-IDF is a commonly used representation in application scenarios such as _information retrieval_ and _text classification_.
+<br><br>
+### Common fundamental drawbacks
+- They’re discrete representations—i.e., they treat language units (words, n-grams,
+etc.) as atomic units. This discreteness hampers their ability to capture relationships
+between words.
+- The feature vectors are sparse and high-dimensional representations. The dimensionality
+increases with the size of the vocabulary, with most values being zero
+for any vector. This hampers learning capability. Further, high-dimensionality
+representation makes them computationally inefficient.
+- They cannot handle OOV words.
+
+## Distributed Representations
+
+### _Terms_
+
+- **Distributional similarity**: the meaning of a word can be understood from the context
+in which the word appears. This is also known as _**connotation**_: meaning is defined by context.
+- **Distributional hypothesis**: words that occur in similar contexts have similar meanings.
+- **Distributional representation**: 
+	- representation schemes that are obtained based on distribution of
+words from the context in which the words appear.
+	- Mathematically, distributional representation schemes use
+high-dimensional vectors to represent words. These vectors are obtained from a
+co-occurrence matrix that captures co-occurrence of word and context. The
+dimension of this matrix is equal to the size of the vocabulary of the corpus. 
+	- The four schemes that we’ve seen so far—one-hot, bag of words, bag of n-grams, and
+TF-IDF—all fall under the umbrella of distributional representation, which are very high dimensional and sparse.
+- **Distributed representation**:
+	- This is based on the distributional hypothesis.
+	- This distributed representation schemes significantly compress the dimensionality. 
+	- This results in vectors that are **compact** (i.e., low dimensional) and **dense** (i.e., hardly any zeros).
+- **Embedding**: This is a mapping between vector space coming from **distributional representation** to vector space coming from **distributed representation**.
+- **Vector semantics**: This refers to the set of NLP methods that aim to learn the word representations
+based on distributional properties of words in a large corpus.
+
+
+### Word Embeddings
+- The neural network–based word representation model known as **Word2vec** based on “distributional
+similarity,” can capture word analogy relationships such as:
+- King – Man + Woman ≈ Queen
+- While learning such semantically rich relationships, **Word2vec** ensures that the
+learned word representations are _low dimensional_ (vectors of dimensions 50–500, instead of several thousands)
+and _dense_ (that is, most values in these vectors are non-zero). 
+- **Word2vec**  projects the meaning of the words in a vector space where words with similar meanings will tend to cluster together, and words with very different meanings are far from one another.
+- Pre-trained word embeddings
+	- Someone has done the hard work of training word embeddings on a large corpus, such as Wikipedia, news articles, or even the entire web, and has put words and their corresponding vectors on the web.
+	- Word2vec by Google, GloVe by Stanford, and fasttext embeddings by Facebook
+- Training our own embeddings
+	- **Language model** is a (statistical) model that tries to give a probability distribution over sequences of words.
+	- **Continuous bag of words (CBOW)**: In CBOW, the primary task is to build a **language model** that correctly predicts
+the center word given the context words in which the center word appears.
+	- **SkipGram** is very similar to CBOW, with some minor changes. In Skip‐
+Gram, the task is to predict the context words from the center word.
+	- There are several **hyperparameters**: _window size_, _dimensionality_ of the vectors
+to be learned, _learning rate_, _number of epochs_, etc.
+	- One of the most commonly used implementations is **gensim**.
+
+### Going Beyond Words
+- In most NLP applications, we seldom deal with atomic units like words—we deal with sentences, paragraphs, or even full texts.
+- **Doc2vec** allows us to directly learn the representations for texts of arbitrary lengths (phrases, sentences, paragraphs, and documents) by taking the context of words in the text into account.
+- Usage: _text classification_, _document tagging_, _text recommendation systems_, and _simple chatbots
+for FAQs_.
+
+## Universal Text Representations
+
+- In 2018, the idea of _contextual word representations_, which uses **language modeling** which is the task of predicting the
+next likely word in a sequence of words.
+- Neural architectures such as **recurrent neural networks (RNNs)** and **transformers** were used to develop large-scale models of language (**ELMo**, **BERT**).
+- Usage: _question answering_, _semantic role labeling_, _named entity recognition_, and _coreference resolution_
+
+
+### A few important aspects to keep in mind while using them in your project:
+- All text representations are inherently biased based on what they saw in training data.
+- Pre-trained embeddings are generally large-sized files (several gigabytes), which may pose problems in certain deployment scenarios.
+- Modeling language for a real-world application is more than capturing the information via word and sentence embeddings.
+
+
+## Handcrafted Feature Representations
+- In many cases, we do have some domain-specific knowledge about the given NLP problem, which we would like to incorporate into the model we’re building.
+In such cases, we resort to handcrafted features.
+
+- TextEvaluator is software developed by Educational Testing Service (ETS). The goal of this tool is to help teachers and educators provide support
+in choosing grade-appropriate reading materials for students and identifying sources of comprehension difficulty in texts.
+
+- Another software tool from ETS that’s popular for grading is the automated essay scorer used in online exams, such as the Graduate Record Examination (GRE) and Test of English as a Foreign Language (TOEFL), to evaluate test-taker essays.
 
 _Content Source_: 
-- Practical Natural Language Processing Chapter 1 ISBN: 978-1-492-05405-4
+- Practical Natural Language Processing  ISBN: 978-1-492-05405-4
 - Deep Learning. Cambridge: MIT Press, 2016. ISBN: 978-0-262-03561-3
