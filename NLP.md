@@ -387,9 +387,9 @@ in the input, and disregards redundant or superfluous information.
 - Voice-based conversational agents like Amazon Alexa and Apple Siri are some of the
 most ubiquitous applications of NLP, and they’re the ones most people are already
 familiar with. Figure below shows the typical interaction model of a conversational agent.
-<br>
 
-	![Flow of conversation agents](images/flow_of_conversation_agents.jpg)
+
+![Flow of conversation agents](images/flow_of_conversation_agents.jpg)
 
 1. _Speech recognition and synthesis_: These are the main components of any voicebased
 conversational agent. Speech recognition involves converting speech signals
@@ -437,7 +437,8 @@ also generate a completely new response.
 ## Text Representation
 
 - text representation: the conversion of raw text to a suitable numerical form.
-<br>
+
+
 
 	![Text Representation within the NLP Pipeline](images/text_representation_within_NLP_pipeline.jpg)
 
@@ -466,9 +467,9 @@ with text data, the text data must be converted into some mathematical form.
 text blobs is using cosine similarity: the cosine of the angle between their
 corresponding vectors. The cosine of 0° is 1 and the cosine of 180° is –1, with the
 cosine monotonically decreasing from 0° to 180°.  Given two vectors, A and B, each with n components, the similarity between them is computed as follows:
-<br>
 
-	![Similarity between vectors](images/similarity_between_vectors.jpg)
+
+![Similarity between vectors](images/similarity_between_vectors.jpg)
 
 <br><br>
 ## Basic Vectorization Approaches
